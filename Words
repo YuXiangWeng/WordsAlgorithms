@@ -1,0 +1,77 @@
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+
+public class WordAlgorithms {
+    private static File f;
+    private static Scanner s;
+
+    public static void main(String[] args) throws FileNotFoundException {
+        f = new File("words.txt");
+        int twoLetters = twoLetters();
+        int amountofLongest = amountLongest();
+        int palidromes = palidromes();
+        System.out.println(twoLetters);
+        System.out.println(amountofLongest);
+        System.out.println(palidromes);
+        s.close();
+    }
+
+    public static int twoLetters() throws FileNotFoundException {
+        s = new Scanner(f);
+        String word = "";
+        int twoLetter = 0;
+        while (s.hasNext()) {
+            word = s.nextLine();
+            if (word.length() == 2) {
+                twoLetter++;
+            }
+        }
+        return twoLetter;
+    }
+
+    public static int amountLongest() throws FileNotFoundException {
+        s = new Scanner(f);
+        String word = "";
+        int amount = 0;
+        int total = 0;
+        while (s.hasNext()) {
+            word = s.nextLine();
+            if (word.length() > amount) {
+                amount = word.length();
+            }
+        }
+        while (s.hasNext()) {
+            word = s.nextLine();
+            if (word.length() == amount) {
+                total++;
+            }
+
+        }
+        return total;
+    }
+
+    public static int palidromes () throws FileNotFoundException{
+        s = new Scanner(f);
+        int total = 0;
+        while (s.hasNext()) {
+            if (s.nextLine().length()%2 == 0){
+                for (int i =0; i < s.nextLine().length(); i ++){
+                    int letters =0;
+                    if(s.nextLine().substring(i,i+1)==s.nextLine().substring(s.nextLine().length()-1-i,s.nextLine().length()-i )){
+                        letters ++;
+                        if (letters == s.nextLine().length()/2){
+                            total ++;
+                        }
+                    }
+                }
+            }
+            if (s.nextLine().length()%2 == 1) {
+                for (int i =0; i < s.nextLine().length(); i ++){
+                    int oddletters =0;
+            }
+        }
+    }
+    return total;
+}
+}
